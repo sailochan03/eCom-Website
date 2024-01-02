@@ -1,0 +1,47 @@
+li{
+    list-style: none;
+    margin-left: 2%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+ul{
+    padding-right: 5%;
+}
+nav{
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    background-color: rgb(70, 210, 235);
+}
+nav h2{
+    padding-left: 5%;
+}
+ul{
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.search{
+    height: 35%;
+    width: 45%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.prod-row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+.prod-card{
+    display: inline;
+    border: 2px solid black;
+    height: 340px;
+    padding: 3px;
+}
+.desc{
+    display: flex;
+    justify-content: space-between;
+}
