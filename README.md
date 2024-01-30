@@ -1,4 +1,4 @@
-#eCommerce Website with Bootstrap
+# eCommerce Website with Bootstrap
 
 This repository contains the source code for an eCommerce website built using HTML, CSS, JavaScript, and the Bootstrap framework. The website offers a variety of clothing items such as jackets, t-shirts, shirts, hoodies, and pullovers. It features a responsive design to ensure a seamless user experience on both desktop and mobile devices.
 
