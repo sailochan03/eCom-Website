@@ -4,61 +4,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>onlySMiX.com</title>
+    <title>EZSHOP</title>
     <link rel="stylesheet" href="home.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Freehand&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const wrapper = $(".sliderWrapper");
+            const menuItems = $(".menuItem");
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+            const products = [
+                {
+                    id: 1,
+                    title: "PRINTED VARSITY JACKET",
+                    price: 2499,
+                    colors: [
+                        {
+                            code: "white",
+                            img: "./images/white jacket.jpeg",
+                        },
+                        {
+                            code: "black",
+                            img: "./images/black jacket.jpeg",
+                        },
+
+                    ],
+                },
+                {
+                    id: 2,
+                    title: "TWO TONE TEE",
+                    price: 999,
+                    colors: [
+                        {
+                            code: "blue",
+                            img: "./images/blue t shirt.jpeg",
+                        },
+                        {
+                            code: "brown",
+                            img: "./images/brown t shirt.jpeg",
+                        },
+                    ],
+                },
+                {
+                    id: 3,
+                    title: "GRAPHIC SHIRT",
+                    price: 999,
+                    colors: [
+                        {
+                            code: "white",
+                            img: "./images/white shirt.jpeg",
+                        },
+                        {
+                            code: "black",
+                            img: "./images/black shirt.jpeg",
+                        },
+                    ],
+                },
+
+                {
+                    id: 4,
+                    title: "GRAPHIC HOODIE",
+                    price: 1299,
+                    colors: [
+                        {
+                            code: "white",
+                            img: "./images/white hoodie.jpeg",
+                        },
+                        {
+                            code: "black",
+                            img: "./images/black hoodie.jpeg",
+                        },
+                    ],
+                },
+                {
+                    id: 5,
+                    title: "PRINTED PULLOVERS",
+                    price: 1299,
+                    colors: [
+                        {
+                            code: "white",
+                            img: "./images/white sweatshirt.jpeg",
+                        },
+                        {
+                            code: "black",
+                            img: "./images/black sweatshirt.jpeg",
+                        },
+                    ],
+                },
+            ];
+
+            let choosenProduct = products[0];
+
+            const currentProductImg = $(".productImg");
+            const currentProductTitle = $(".productTitle");
+            const currentProductPrice = $(".productPrice");
+            const currentProductColors = $(".color");
+            const currentProductSizes = $(".size");
+
+            menuItems.each(function (index) {
+                $(this).on("click", function () {
+                    // Change the current slide
+                    wrapper.css("transform", `translateX(${-100 * index}vw)`);
+
+                    // Change the chosen product
+                    choosenProduct = products[index];
+
+                    // Change texts of currentProduct
+                    currentProductTitle.text(choosenProduct.title);
+                    currentProductPrice.text("Rs." + choosenProduct.price);
+                    currentProductImg.attr("src", choosenProduct.colors[0].img);
+
+                    // Assign new colors
+                    currentProductColors.each(function (index) {
+                        $(this).css("background-color", choosenProduct.colors[index].code);
+                    });
+                });
+            });
+
+            currentProductColors.each(function (index) {
+                $(this).on("click", function () {
+                    currentProductImg.attr("src", choosenProduct.colors[index].img);
+                });
+            });
+
+            currentProductSizes.each(function (index) {
+                $(this).on("click", function () {
+                    currentProductSizes.css({
+                        "background-color": "white",
+                        "color": "black"
+                    });
+                    $(this).css({
+                        "background-color": "black",
+                        "color": "white"
+                    });
+                });
+            });
+
+            const productBtn = $(".productBtn");
+            const payment = $(".payment");
+            const close = $(".close");
+
+            productBtn.on("click", function () {
+                payment.css("display", "flex");
+            });
+
+            close.on("click", function () {
+                payment.css("display", "none");
+            });
+
+        });
+    </script>
+
 </head>
 
 <body>
     <nav>
-        <h2>onlySMiX</h2>
-
-        <div class="search">
-            <input type="text" id="search" placeholder="Enter product name or category">
-            <button id="search-btn">Search</button>
+        <div class="nav-top">
+            <div class="nav-item">
+                <img src="./images/ez$hop.png" alt="" height="40">
+            </div>
         </div>
-
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Aparrel</a></li>
-            <li><a href="#">Accessories</a></li>
-            <li><a href="#">Collectibles</a></li>
-        </ul>
-
+        <div class="nav-bottom">
+            <h3 class="menuItem">JACKETS</h3>
+            <h3 class="menuItem">T-SHIRTS</h3>
+            <h3 class="menuItem">SHIRTS</h3>
+            <h3 class="menuItem">HOODIES</h3>
+            <h3 class="menuItem">PULLOVERS</h3>
+        </div>
     </nav>
-
-    <div class="prod-row">
-        <div class="prod-card">
-            <img src="./2fc56934073232.56c33cf863075.jpg" alt="" width="300px" height="300px">
-            <div class="desc">
-                <p>prod 1</p>
-                <p>Rs.1000</p>
+    <div class="slider">
+        <div class="sliderWrapper">
+            <div class="sliderItem"> <!-- item3 -->
+                <img src="./images/white jacket.jpeg" alt="" class="sliderImg" height="85%">
+                <h1 class="sliderTitle">JACKETS</h1>
+                <h2 class="sliderPrice">Rs.2499</h2>
+                <button class="buyBtn">BUY NOW!</button>
             </div>
-
-        </div>
-        <div class="prod-card">
-            <img src="./2fc56934073232.56c33cf863075.jpg" alt="" width="300px" height="300px">
-            <div class="desc">
-                <p>prod 1</p>
-                <p>Rs.1000</p>
+            <div class="sliderItem"> <!-- item1 -->
+                <img src="./images/blue t shirt.jpeg" alt="" class="sliderImg" height="85%">
+                <h1 class="sliderTitle">T-SHIRTS</h1>
+                <h2 class="sliderPrice">Rs.999</h2>
+                <button class="buyBtn">BUY NOW!</button>
             </div>
-
-        </div>
-        <div class="prod-card">
-            <img src="./2fc56934073232.56c33cf863075.jpg" alt="" width="300px" height="300px">
-            <div class="desc">
-                <p>prod 1</p>
-                <p>Rs.1000</p>
+            <div class="sliderItem"> <!-- item2 -->
+                <img src="./images/white shirt.jpeg" alt="" class="sliderImg" height="85%">
+                <h1 class="sliderTitle">SHIRTS</h1>
+                <h2 class="sliderPrice">Rs.999</h2>
+                <button class="buyBtn">BUY NOW!</button>
+            </div>
+            <div class="sliderItem"> <!-- item4 -->
+                <img src="./images/white hoodie.jpeg" alt="" class="sliderImg" height="85%">
+                <h1 class="sliderTitle">HOODIES</h1>
+                <h2 class="sliderPrice">Rs.1299</h2>
+                <button class="buyBtn">BUY NOW!</button>
+            </div>
+            <div class="sliderItem"> <!-- item5 -->
+                <img src="./images/white sweatshirt.jpeg" alt="" class="sliderImg" height="85%">
+                <h1 class="sliderTitle">PULLOVERS</h1>
+                <h2 class="sliderPrice">Rs.1299</h2>
+                <button class="buyBtn">BUY NOW!</button>
             </div>
 
         </div>
     </div>
+    <div class="features">
+        <div class="feature">
+            <img src="./images/shipping.png" alt="">
+            <span class="featureTitle">FREE SHIPPING</span>
+            <span class="featureDes">Free shipping on all orders.</span>
+        </div>
+        <div class="feature">
+            <img src="./images/return.png" alt="">
+            <span class="featureTitle">15 DAYS RETURN</span>
+            <span class="featureDes">No questions asked and easy refund within a week.</span>
+        </div>
+        <div class="feature">
+            <img src="./images/gift.png" alt="">
+            <span class="featureTitle">GIFT CARDS</span>
+            <span class="featureDes">Buy gift cards and use coupons easily.</span>
+        </div>
+        <div class="feature">
+            <img src="./images/contact.png" alt="">
+            <span class="featureTitle">CONTACT US!</span>
+            <span class="featureDes">Keep in touch with us via email.</span>
+        </div>
+    </div>
+    <div class="product">
+        <img src="./images/blue t shirt.jpeg" alt="" class="productImg">
+        <div class="productDetails">
+            <div class="productTitle">TWO TONE TEE</div>
+            <div class="productPrice">Rs.999</div>
+            <p class="prodDes">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae voluptates nemo nihil
+                repellendus ut consequatur? Corporis eligendi, ipsam modi et assumenda non debitis veniam vitae natus
+                voluptates nulla nihil! Aliquam.</p>
+
+            <div class="colors">
+                <div class="color"></div>
+                <div class="color"></div>
+            </div>
+            <div class="sizes">
+                <div class="size">M</div>
+                <div class="size">L</div>
+                <div class="size">XL</div>
+            </div>
+            <button class="productBtn">BUY NOW!</button>
+        </div>
+        <div class="payment">
+            <h1 class="payTitle">PERSONAL INFORMATION</h1>
+            <label>Name and Surname</label>
+            <input type="text" placeholder="John Doe" class="payInput">
+            <label>Phone Number</label>
+            <input type="text" placeholder="+1 234 5678" class="payInput">
+            <label>Address</label>
+            <input type="text" placeholder="Elton St 21 22-145" class="payInput">
+            <h1 class="payTitle">CARD INFORMATION</h1>
+            <div class="cardIcons">
+                <img src="./images/visa.png" alt="" class="cardIcon">
+                <img src="./images/master.png" alt="" class="cardIcon">
+            </div>
+            <input type="password" class="payInput" placeholder="Card Number">
+            <div class="cardInfo">
+                <input type="text" placeholder="MM" class="payInput sm">
+                <input type="text" placeholder="YYYY" class="payInput sm">
+                <input type="text" placeholder="CVV" class="payInput sm">
+            </div>
+            <button class="payButton">Checkout!</button>
+            <span class="close">X</span>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="footerLeft">
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">About Us</h1>
+                <ul class="fMenuList">
+                    <li class="fListItem">Company</li>
+                    <li class="fListItem">Contact</li>
+                    <li class="fListItem">Careers</li>
+                    <li class="fListItem">Affiliate</li>
+                    <li class="fListItem">Stores</li>
+                </ul>
+            </div>
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Useful Links</h1>
+                <ul class="fMenuList">
+                    <li class="fListItem">Support</li>
+                    <li class="fListItem">Refund</li>
+                    <li class="fListItem">FAQ</li>
+                    <li class="fListItem">Feedback</li>
+                    <li class="fListItem">Stories</li>
+                </ul>
+            </div>
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Products</h1>
+                <ul class="fMenuList">
+                    <li class="fListItem">T-Shirts</li>
+                    <li class="fListItem">Shirts</li>
+                    <li class="fListItem">Jackets</li>
+                    <li class="fListItem">Hoodies</li>
+                    <li class="fListItem">Sweatshirts</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerRight">
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Subscribe to our newsletter</h1>
+                <div class="fMail">
+                    <input type="text" placeholder="your@email.com" class="fInput">
+                    <button class="fButton">Join!</button>
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Follow Us</h1>
+                <div class="fIcons">
+                    <img src="./images/facebook.png" alt="" class="fIcon">
+                    <img src="./images/twitter.png" alt="" class="fIcon">
+                    <img src="./images/instagram.png" alt="" class="fIcon">
+                    <img src="./images/whatsapp.png" alt="" class="fIcon">
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <span class="copyright">@Sai Lochan Dash. All rights reserved. 2024.</span>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
